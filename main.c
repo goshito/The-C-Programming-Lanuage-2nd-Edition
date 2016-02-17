@@ -1,24 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   main.c
- * Author: Georgi
- *
- * Created on 17 Февруари 2016, 11:09
- */
-
 #include <stdio.h>
-#include <stdlib.h>
-
-/*
- * 
- */
-int main(int argc, char** argv) {
-
-    return (EXIT_SUCCESS);
+//Fahr to celsius table over 20, using celsius = 5*(fahr-32)/9, p.25
+int main() {
+    int fahr, celsius;
+    int lower, upper, step;
+    
+    lower = 0;
+    upper = 300;
+    step = 20;
+    
+    printf("Fahrenheit:\tCelsius:\n");
+    fahr = lower;
+    while (fahr <= 300) {
+        celsius = 5 * (fahr - 32) /9;
+        printf("%d\t\t%d\n", fahr, celsius);
+        fahr = fahr + step;
+    }
+    return 0;
 }
-
