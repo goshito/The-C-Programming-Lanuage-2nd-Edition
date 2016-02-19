@@ -1,11 +1,16 @@
-//18, count characters in input 2nd version
+//19, Line Counting 
 #include <stdio.h>
 
+//count lines in input, I added curly brackets
 int main() {
-    double nc;
+    int c, nl;
     
-    for (nc = 0; getchar() != EOF; ++nc)
-        ;
-    printf("%.0f\n", nc);
+    nl = 0;
+    while ((c = getchar()) != EOF) {
+        if ((c == getchar()) != '\n') {
+            ++nl;            
+        }        
+    }
+    printf("%d\n", nl);
     return 0;
 }
