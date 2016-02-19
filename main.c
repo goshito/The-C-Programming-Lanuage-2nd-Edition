@@ -1,15 +1,13 @@
-//15, Symbolic constants
+//16, File copying
 #include <stdio.h>
 
-#define LOWER 0
-#define UPPER 300
-#define STEP 20
-
 int main() {
-    int fahr;
+    int c;
     
-    for (fahr = LOWER; fahr <= UPPER; fahr += STEP) {
-        printf("%3d\t%6.1f\n", fahr, (5.0 / 9.0) * (fahr - 32));
+    c = getchar();
+    while (c != EOF) {
+        putchar(c);
+        c = getchar();
     }
     return 0;
 }
