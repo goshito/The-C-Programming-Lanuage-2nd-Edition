@@ -1,11 +1,11 @@
-//17, 
+//18, count characters in input 2nd version
 #include <stdio.h>
 
 int main() {
-    int c;
+    double nc;
     
-    while ((c = getchar()) != EOF) {
-        putchar(c);
-    }
+    for (nc = 0; getchar() != EOF; ++nc)
+            ;
+    printf("%.0f\n", nc);
     return 0;
 }
