@@ -1,16 +1,24 @@
-//19, Line Counting 
+//20, 1.5.4 Word counting
 #include <stdio.h>
-
-//count lines in input, I added curly brackets
+#define IN 1    //inside a word
+#define OUT 0   // outside a word
+//count lines, words and characters in input
 int main() {
-    int c, nl;
+    int c, nl, nw, nc, state;
     
-    nl = 0;
+    state = OUT;
+    nl = nw = nc = 0;
     while ((c = getchar()) != EOF) {
-        if ((c == getchar()) != '\n') {
-            ++nl;            
-        }        
+        ++nc;
+        if (c == '\n')
+            ++nl;
+        if (c == ' ' || c == '\n' || c == '\t')
+            state = OUT;
+        else if (state == OUT) {
+            state = IN;
+            ++nw;
+        }
     }
-    printf("%d\n", nl);
+    printf("%d lines,  %d words,  %d characters\n", nl, nw, nc);
     return 0;
 }
