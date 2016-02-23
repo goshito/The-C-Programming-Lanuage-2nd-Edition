@@ -1,34 +1,48 @@
-//27, 1.8 Arguments call by value 
+// 29, 1.9 Character arrays
 #include <stdio.h>
+#define MAXLINE 100     // maximum input line size
 
-int power(int m, int n);
+int get_line(char line[], int maxline);
+void copy(char to[], char from[]);
 
-//test power function
+// print longest input line
 int main() {
-    int i;
+    int len;        // current line length
+    int max;        // maximum length seen so far
+    char line[MAXLINE]; // current input line
+    char longest[MAXLINE];
     
-    for (i = 0; i < 10; ++i)
-        printf("%d %d %d\n", i, power(2, i), power(-3, i));
+    max = 0;
+    while ((len = get_line(line, MAXLINE)) > 0)
+        if (len > max) {
+            max = len;
+            copy(longest, line);            
+        }
+    if (max > 0)    // there was a line
+        printf("%s", longest);
     return 0;
 }
 
-// power: raise base to the n-th power; n >= 0
-/*
-   int power(int base, int n) {
-    int i, p;
+// getline: read a line into s, return length
+int get_line(char s[], int lim) {
+    int c, i;
     
-    p = 1;
-    for (i = 1; i <= n; ++i)
-        p = p * base;
-    return p;
+    for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
+        s[i] = c;
+    if (c == '\n') {
+        s[i] = c;
+        ++i;
+    }
+    s[i] = '\0';
+    return i;
 }
-*/
 
-// power: raise base to n-th power; n >= 0; ver.2
-int power(int base, int n) {
-    int p;
+/* copy: copy 'from' into 'to'; assume to is big enough */
+
+void copy(char to[], char from[]) {
+    int i;
     
-    for (p = 1; n > 0; --n)
-        p = p * base;
-    return p;
+    i = 0;
+    while ((to[i] = from [i]) != '0')
+        ++i;
 }
