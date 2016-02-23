@@ -1,4 +1,4 @@
-//24, 1.7 Functions 
+//27, 1.8 Arguments call by value 
 #include <stdio.h>
 
 int power(int m, int n);
@@ -13,11 +13,22 @@ int main() {
 }
 
 // power: raise base to the n-th power; n >= 0
-int power(int base, int n) {
+/*
+   int power(int base, int n) {
     int i, p;
     
     p = 1;
     for (i = 1; i <= n; ++i)
+        p = p * base;
+    return p;
+}
+*/
+
+// power: raise base to n-th power; n >= 0; ver.2
+int power(int base, int n) {
+    int p;
+    
+    for (p = 1; n > 0; --n)
         p = p * base;
     return p;
 }
